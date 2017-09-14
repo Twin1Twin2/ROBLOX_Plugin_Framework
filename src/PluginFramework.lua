@@ -202,13 +202,30 @@ function PluginFramework:DisableInput()
 end
 
 
+function PluginFramework:ToolAdd(toolName, toolObject)
+    table.insert(self.ToolList, toolName)
+    self.Tools[toolName, toolObject]
+end
+
+
+function PluginFramework:CreateMenu()
+
+end
+
+
+function PluginFramework:CreateToolbar(toolbarName)
+
+end
+
+
 function PluginFramework:new(pluginName)
     local this = {
         Name    = "";
 
         Plugin  = nil;
-        Toolbar = nil;
         Mouse   = nil;
+
+        Toolbars    = {};
 
         Menus       = {};
         MenuList    = {};
