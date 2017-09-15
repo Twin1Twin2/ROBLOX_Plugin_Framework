@@ -37,8 +37,6 @@ function MenuButton:new(menu, name)
         OnCtrlClick         = nil;  --Signal
         OnAltClick          = nil;  --Signal
         OnCtrlAltClick      = nil;  --Signal
-
-        OnDisabledChanged   = nil;  --Signal
     }
 
 
@@ -46,6 +44,14 @@ function MenuButton:new(menu, name)
     setmetatable(this, self)
 
 
+    this.OnMouseButton1Click    = Signal:new()
+    this.OnMouseButton2Click    = Signal:new()
+
+    this.OnCtrlClick    = Signal:new()
+    this.OnAltClick     = Signal:new()
+    this.OnCtrlAltClick = Signal:new()
+
+    
     return this
 end
 
