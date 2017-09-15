@@ -88,7 +88,11 @@ end
 
 
 function Menu:CreateCustomObject(name, global, index)
+    local object    = MenuObject:new(self.PluginManager, name)
 
+    SetupMenuObject(self, object, name, global, index)
+
+    return object
 end
 
 
