@@ -208,13 +208,25 @@ function PluginFramework:ToolAdd(toolName, toolObject)
 end
 
 
-function PluginFramework:CreateMenu()
+function PluginFramework:CreateMenu(menuName, index)
+    local menu  = Menu:new(self, menuName)
 
+    index   = index or #self.MenuList + 1
+
+    table.insert(self.MenuList, index, menuName)
+    self.Menus[menuName]    = menu
+
+    return menu
 end
 
 
 function PluginFramework:CreateToolbar(toolbarName)
+    local toolbar   = PluginToolbar:new(self, toolbarName)
 
+    table.insert(self.ToolbarList, toolbarName)
+    self.Toolbars[toolbarName]  = toolbar
+
+    return toolbar
 end
 
 
@@ -226,6 +238,7 @@ function PluginFramework:new(pluginName)
         Mouse   = nil;
 
         Toolbars    = {};
+        ToolbarList = {};
 
         Menus       = {};
         MenuList    = {};
