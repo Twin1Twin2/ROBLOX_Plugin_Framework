@@ -28,10 +28,14 @@ function ToolObject:new()
     }
 
 
+    self.__index    = self
+    setmetatable(this, self)
+
+
     this.OnToolSelect       = Signal:new();
     this.OnToolDeselect     = Signal:new();
     this.OnSelectionChanged = Signal:new();
-
+    
 
     return this
 end
