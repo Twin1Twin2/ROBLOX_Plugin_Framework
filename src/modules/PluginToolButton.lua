@@ -67,8 +67,6 @@ function PluginToolButton:new(toolbarObject, buttonName, hoverText, buttonIcon)
         button:SetActive(false)
     end)
 
-    pluginManager:ToolAdd(toolPath, this)
-
     return this
 end
 
