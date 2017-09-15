@@ -9,6 +9,9 @@
 
 local Signal    = require(script.Parent.Signal)
 
+local PluginButton      = require(script.Parent.PluginButton)
+local PluginToolButton  = require(script.Parent.PluginToolButton)
+
 
 -- // MAIN CODE // --
 
@@ -17,8 +20,25 @@ local PluginToolbar = {
 }
 
 
-function PluginToolbar:Button()
+function PluginToolbar:Button(buttonName, buttonHovertext, buttonIcon)
+    local button    = PluginButton:new(self, buttonName, buttonHovertext, buttonIcon)
 
+    table.insert(self.PluginButtonList, buttonName)
+    self.PluginButtons[buttonName]  = button
+
+    return button
+end
+
+
+function PluginToolbar:ToolButton(buttonName, buttonHovertext, buttonIcon)
+    local toolButton    = PluginToolButton:new(self, buttonName, buttonHovertext, buttonIcon)
+
+    table.insert(self.PluginButtonList, buttonName)
+    self.PluginButtons[buttonName]  = button
+
+    self.PluginManager:ToolAdd(toolButton.FullName, toolButton)
+
+    return toolButton
 end
 
 
@@ -36,10 +56,7 @@ function PluginToolbar:new(pluginManager, toolbarName)
         Toolbar         = nil;
 
         PluginButtons           = {};
-        PluginButtonsList       = {};
-
-        PluginToolButtons       = {};
-        PluginToolButtonsList   = {};
+        PluginButtonList        = {};   --lists are used for iterating though their related dictionary
     }
 
 
