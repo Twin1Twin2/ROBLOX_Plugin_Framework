@@ -20,7 +20,7 @@ local PluginToolbar = {
 }
 
 
-function PluginToolbar:Button(buttonName, buttonHovertext, buttonIcon)
+function PluginToolbar:CreateButton(buttonName, buttonHovertext, buttonIcon)
     local button    = PluginButton:new(self, buttonName, buttonHovertext, buttonIcon)
 
     table.insert(self.PluginButtonList, buttonName)
@@ -30,7 +30,7 @@ function PluginToolbar:Button(buttonName, buttonHovertext, buttonIcon)
 end
 
 
-function PluginToolbar:ToolButton(buttonName, buttonHovertext, buttonIcon)
+function PluginToolbar:CreateToolButton(buttonName, buttonHovertext, buttonIcon)
     local toolButton    = PluginToolButton:new(self, buttonName, buttonHovertext, buttonIcon)
 
     table.insert(self.PluginButtonList, buttonName)
